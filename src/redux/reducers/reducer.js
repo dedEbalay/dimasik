@@ -1,17 +1,22 @@
 const initialState = {
     loading: true,
-    menu: []
+    menu: [],
+    searchFilter: ''
 };
 
 const reducer = (state=initialState, action) => {
     switch (action.type) {
         case 'BEER_LIST_LOADED':
-            console.log('Успех!')
             return {
                 ...state,
                 loading: false,
                 menu: action.payload
             };
+        case 'SEARCH_BEER':
+            return {
+                ...state,
+                searchFilter: action.payload
+            }
         default: 
             return state
     }

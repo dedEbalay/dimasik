@@ -5,6 +5,14 @@ const beerListLoaded = (newMenu) => {
     }
 };
 
+const searchBeer = (text) => {
+    return {
+        type: 'SEARCH_BEER',
+        payload: text
+    }
+}
+
 export {
-    beerListLoaded
+    beerListLoaded,
+    searchBeer
 }

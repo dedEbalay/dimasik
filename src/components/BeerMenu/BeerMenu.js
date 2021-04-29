@@ -7,7 +7,7 @@ import LoadSpinner from '../LoadSpinner/LoadSpinner';
 
 export function BeerMenu(props) {
 
-    const {beerList, beerListLoaded} = props
+    const {beerList, beerListLoaded, searchFilter} = props
 
     useEffect(() => {
         beerList.getBeer()
@@ -15,6 +15,28 @@ export function BeerMenu(props) {
     }, [beerListLoaded, beerList]);
 
     const {menu, loading} = props;
+
+    function searchPost(condition, lowerItems, items) {
+        if (condition.length === 0) {
+            return items
+        } else {
+            const filtredCondition = condition.toLowerCase();
+            const filter = lowerItems.map(item => {
+                if (item.indexOf(filtredCondition) > -1) {
+                    return lowerItems.findIndex(elem => elem === item)
+                }
+                return null
+            })
+            const filtredFilter = filter.filter(item => item != null)
+            return filtredFilter.map(item => {
+                return items[item]
+            })
+        }
+    }
+
+    const lowerMenu = menu.map(item => item.name.toLowerCase());
+    
+    let visibleMenu = searchPost(searchFilter, lowerMenu ,menu);
 
     if (loading) {
         return (
@@ -26,7 +48,7 @@ export function BeerMenu(props) {
         <div className="container beer-container">
             <div className="row justify-content-center">
                 {
-                    menu.map(item => {
+                    visibleMenu.map(item => {
                         return (        
                             <BeerCard key={item.id} {...item}/>
                         )
@@ -40,7 +62,8 @@ export function BeerMenu(props) {
 const mapStateToProps = (store) => {
     return {
         menu: store.menu,
-        loading: store.loading
+        loading: store.loading,
+        searchFilter: store.searchFilter
     }
 };
 
