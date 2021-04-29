@@ -1,49 +1,51 @@
-import React, {Component} from 'react';
+import React, { useEffect } from 'react';
 import BeerCard from '../BeerCard/BeerCard';
 import {connect} from 'react-redux';
-// import {beerListLoaded} from '../../redux/actions/actions';
+import {beerListLoaded} from '../../redux/actions/actions';
 import BeerListWrapper from '../BeerListWrapper/BeerListWrapper';
+import LoadSpinner from '../LoadSpinner/LoadSpinner';
 
-export class BeerMenu extends Component {
+export function BeerMenu(props) {
 
-    componentDidMount() {
-        const {beerList} = this.props;
+    const {beerList, beerListLoaded} = props
+
+    useEffect(() => {
         beerList.getBeer()
-            .then(res=>this.props.beerListLoaded(res));
-        console.log('Компонент дид маунт')
-    }
+            .then(res =>beerListLoaded(res));
+    }, [beerListLoaded, beerList]);
 
-    render() {
-        
-        const {menu} = this.props;
-        
-        console.log(menu)
+    const {menu, loading} = props;
 
+    if (loading) {
         return (
-            <div className="container beer-container">
-                <div className="row">
-                    <BeerCard />
-                </div> 
-            </div>
+            <LoadSpinner />
         )
     }
-}
+
+    return (
+        <div className="container beer-container">
+            <div className="row justify-content-center">
+                {
+                    menu.map(item => {
+                        return (        
+                            <BeerCard key={item.id} {...item}/>
+                        )
+                    })
+                }
+            </div>
+        </div>
+    );
+};
 
 const mapStateToProps = (store) => {
     return {
-        menu: store.menu
+        menu: store.menu,
+        loading: store.loading
     }
-}
+};
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        beerListLoaded: (newMenu) => {
-            dispatch({
-                type: 'BEER_LIST_LOADED',
-                payload: newMenu
-            })
-        }
-    }
-}
+const mapDispatchToProps = {
+    beerListLoaded
+};
 
 export default BeerListWrapper()(connect(mapStateToProps, mapDispatchToProps)(BeerMenu));

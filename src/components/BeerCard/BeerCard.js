@@ -1,17 +1,20 @@
 import React from 'react';
 
-const BeerCard = () => {
+function BeerCard(props) {
     return (
-            <div className="w-25 p-3">
-                <div className="card" >
-                    <img src="..." className="card-img-top" alt="Пивко-лого" />
+        <div className="w-80 card mb-4">
+            <div className="row g-0">
+                <div className="col-md-4">
+                    <img className="card-img"src={props.image_url} alt="Пивчик" />
+                </div>
+                <div className="col-md-8">
                     <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <div href="#" className="btn btn-dark">Go somewhere</div>
+                        <h5 className="card-title">{props.name}</h5>
+                        <p className="card-text">{props.description}</p>
                     </div>
-                </div>    
+                </div>
             </div>
+        </div>    
     )
 }
 

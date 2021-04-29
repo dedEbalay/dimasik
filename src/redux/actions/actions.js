@@ -1,7 +1,7 @@
-const beerListLoaded = (data) => {
+const beerListLoaded = (newMenu) => {
     return {
         type: 'BEER_LIST_LOADED',
-        payload: data
+        payload: newMenu
     }
 };
 
