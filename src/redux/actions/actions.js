@@ -12,7 +12,36 @@ const searchBeer = (text) => {
     }
 }
 
+const goToMenu = () => {
+    return {
+        type: 'GO_TO_MENU'
+    }
+}
+
+const goToMain = () => {
+    return {
+        type: 'GO_TO_MAIN'
+    }
+}
+
+const openSidebar = () => {
+    return {
+        type: 'OPEN_SIDEBAR'
+    }
+}
+
+const addToCart = (id) => {
+    return {
+        type: 'ADD_TO_CART',
+        payload: id
+    }
+}
+
 export {
     beerListLoaded,
-    searchBeer
+    searchBeer,
+    goToMenu,
+    goToMain,
+    openSidebar,
+    addToCart
 }

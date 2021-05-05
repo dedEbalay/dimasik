@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from './components/Header/Header';
-import BeerMenu from './components/BeerMenu/BeerMenu';
+import WindowWrapper from './components/WindowWrapper/WindowWrapper.js';
 
-const App = () => {
+function App() {
   return (
     <>
-      <Header/>
-      <BeerMenu />
+      <Header />
+      <WindowWrapper />
     </>
   )
 }

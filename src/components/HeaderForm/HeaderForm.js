@@ -13,7 +13,7 @@ function HeaderForm(props) {
     };
 
     return (
-        <form className="d-flex w-100">
+        <form className="d-flex">
             <input onChange={onChangeText} className="form-control me-2" type="search" placeholder="Найти пивчик" aria-label="Search" />
         </form>
     )

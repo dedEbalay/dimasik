@@ -32,4 +32,29 @@
   padding-top: 20px;
   padding-bottom: 10px;
 }
+
+.bi-basket::before {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.sidebar-cart {
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.header {
+  z-index: 1;
+}
+
+.beer-container {
+  padding-top: 80px;
+}
+
+.beer-button {
+  top: 10px;
+  right: 20px;
+}
 /*# sourceMappingURL=index.css.map */
