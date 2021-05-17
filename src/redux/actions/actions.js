@@ -37,7 +37,31 @@ const addToCart = (id) => {
     }
 }
 
+const reduceCart = (id) => {
+    return {
+        type: 'REDUCE_CART',
+        payload: id
+    }
+}
+
+const appendCart = (id) => {
+    return {
+        type: 'APPEND_CART',
+        payload: id
+    }
+}
+
+const removeFromCart = (id) => {
+    return {
+        type: 'REMOVE_FROM_CART',
+        payload: id
+    }
+}
+
 export {
+    reduceCart,
+    appendCart,
+    removeFromCart,
     beerListLoaded,
     searchBeer,
     goToMenu,

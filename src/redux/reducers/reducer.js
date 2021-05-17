@@ -8,6 +8,16 @@ const initialState = {
 };
 
 const reducer = (state=initialState, action) => {
+    function sliceThis(element, ...addedElement) {
+        const beforeArr = state.addedToCart.slice(0, state.addedToCart.findIndex(item => item.id === element.id)),
+              afterArr = state.addedToCart.slice(state.addedToCart.findIndex(item => item.id === element.id)+1),
+              newArr = [...beforeArr, ...addedElement, ...afterArr]
+        return newArr
+    }
+    function createNewItem() {
+        let newItem = state.addedToCart[state.addedToCart.findIndex(item => item.id === action.payload)];
+        return newItem
+    }
     switch (action.type) {
         case 'BEER_LIST_LOADED':
             return {
@@ -37,11 +47,44 @@ const reducer = (state=initialState, action) => {
             }
         case 'ADD_TO_CART':
             let newArr = state.addedToCart.map(item => item);
-            const newItem = state.menu[action.payload];
+            let newItem = {...state.menu[action.payload - 1], sum: 1};
+            if (state.addedToCart.filter(item => item.id === action.payload).length > 0) {
+                let addedBeer = createNewItem();
+                addedBeer = {...addedBeer, sum: addedBeer.sum + 1};
+                return {
+                    ...state,
+                    addedToCart: sliceThis(addedBeer, addedBeer)
+                }
+            }
             newArr = [...newArr, newItem];
             return {
                 ...state,
                 addedToCart: newArr
+            }
+        case 'REDUCE_CART':
+            let newItem1 = createNewItem();
+            newItem1 = {...newItem1, sum: newItem1.sum - 1}; 
+            if (newItem1.sum < 1) {
+                return {
+                    ...state,
+                    addedToCart: sliceThis(newItem1)
+                }
+            }
+            return {
+                ...state,
+                addedToCart: sliceThis(newItem1, newItem1)
+            }
+        case 'APPEND_CART':
+            let newItem2 = createNewItem();
+            newItem2 = {...newItem2, sum: newItem2.sum + 1};
+            return {
+                ...state,
+                addedToCart: sliceThis(newItem2, newItem2)
+            }
+        case 'REMOVE_FROM_CART':
+            return {
+                ...state,
+                addedToCart: sliceThis(createNewItem())
             }
         default: 
             return state
