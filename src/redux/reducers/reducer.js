@@ -4,20 +4,28 @@ const initialState = {
     menu: [],
     searchFilter: '',
     sidebarCart: false,
-    addedToCart: []
+    addedToCart: [],
+    greatSum:0
 };
 
 const reducer = (state=initialState, action) => {
     function sliceThis(element, ...addedElement) {
         const beforeArr = state.addedToCart.slice(0, state.addedToCart.findIndex(item => item.id === element.id)),
               afterArr = state.addedToCart.slice(state.addedToCart.findIndex(item => item.id === element.id)+1),
-              newArr = [...beforeArr, ...addedElement, ...afterArr]
-        return newArr
-    }
+              newArr = [...beforeArr, ...addedElement, ...afterArr];
+        return newArr;
+    };
+
     function createNewItem() {
         let newItem = state.addedToCart[state.addedToCart.findIndex(item => item.id === action.payload)];
-        return newItem
-    }
+        return newItem;
+    };
+
+    function getGreatSum(price, sum) {
+        const newSum = price * sum;
+        return newSum;
+    };
+
     switch (action.type) {
         case 'BEER_LIST_LOADED':
             return {
@@ -47,19 +55,21 @@ const reducer = (state=initialState, action) => {
             }
         case 'ADD_TO_CART':
             let newArr = state.addedToCart.map(item => item);
-            let newItem = {...state.menu[action.payload - 1], sum: 1};
+            let newItem = {...state.menu[action.payload - 1], sum: 1, price: Math.floor(Math.random() * 10 - 2) + 2 };
             if (state.addedToCart.filter(item => item.id === action.payload).length > 0) {
                 let addedBeer = createNewItem();
                 addedBeer = {...addedBeer, sum: addedBeer.sum + 1};
                 return {
                     ...state,
-                    addedToCart: sliceThis(addedBeer, addedBeer)
+                    addedToCart: sliceThis(addedBeer, addedBeer),
+                    greatSum: state.greatSum + addedBeer.price
                 }
             }
             newArr = [...newArr, newItem];
             return {
                 ...state,
-                addedToCart: newArr
+                addedToCart: newArr,
+                greatSum: state.greatSum + newItem.price
             }
         case 'REDUCE_CART':
             let newItem1 = createNewItem();
@@ -67,24 +77,30 @@ const reducer = (state=initialState, action) => {
             if (newItem1.sum < 1) {
                 return {
                     ...state,
-                    addedToCart: sliceThis(newItem1)
+                    addedToCart: sliceThis(newItem1),
+                    greatSum: state.greatSum - newItem1.price
                 }
             }
             return {
                 ...state,
-                addedToCart: sliceThis(newItem1, newItem1)
+                addedToCart: sliceThis(newItem1, newItem1),
+                greatSum: state.greatSum - newItem1.price
             }
         case 'APPEND_CART':
             let newItem2 = createNewItem();
             newItem2 = {...newItem2, sum: newItem2.sum + 1};
             return {
                 ...state,
-                addedToCart: sliceThis(newItem2, newItem2)
+                addedToCart: sliceThis(newItem2, newItem2),
+                greatSum: state.greatSum + newItem2.price
             }
         case 'REMOVE_FROM_CART':
+            let newItem3 = createNewItem();
+            const beerSum = getGreatSum(newItem3.price, newItem3.sum)
             return {
                 ...state,
-                addedToCart: sliceThis(createNewItem())
+                addedToCart: sliceThis(newItem3),
+                greatSum: state.greatSum - beerSum
             }
         default: 
             return state

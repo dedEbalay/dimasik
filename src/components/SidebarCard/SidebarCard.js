@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { reduceCart, appendCart, removeFromCart } from '../../redux/actions/actions';
 
 function SidebarCard(props) {
-    const {name, sum, reduceCart, appendCart, removeFromCart, id} = props;
+    const {price, name, sum, reduceCart, appendCart, removeFromCart, id} = props;
 
     return (
         <div className="card bg-dark w-100 px-3">
@@ -12,15 +12,16 @@ function SidebarCard(props) {
                 <button onClick={() => removeFromCart(id)}className="btn btn-danger bi bi-trash"></button>
             </div>
             <div>
-                <div>
-                    <div>ЦЕНА</div>
-                    <div>ЗА ШТУКУ</div>
+                <div className="d-flex">
+                    <p>ЦЕНА</p>
+                    <p>ЗА ШТУКУ</p>
+                    <p>{price}</p>
                 </div>
-                <div>
-                <button onClick={() => reduceCart(id)}>-</button>
-                <span>{sum}</span>
-                <button onClick={() => appendCart(id)}>+</button>
-            </div>
+                <div className="d-flex align-items-center">
+                    <button className="btn btn-primary btn-sm"onClick={() => reduceCart(id)}>-</button>
+                    <span className="d-flex price w-25 justify-content-center">{sum}</span>
+                    <button className="btn btn-primary btn-sm"onClick={() => appendCart(id)}>+</button>
+                </div>
             </div> 
         </div>
     )
