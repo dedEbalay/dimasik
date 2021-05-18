@@ -58,7 +58,14 @@ const removeFromCart = (id) => {
     }
 }
 
+const goToCart = () => {
+    return {
+        type: 'GO_TO_CART'
+    }
+}
+
 export {
+    goToCart,
     reduceCart,
     appendCart,
     removeFromCart,

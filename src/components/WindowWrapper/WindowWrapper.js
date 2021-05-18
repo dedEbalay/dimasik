@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BeerMenu from '../BeerMenu/BeerMenu'
+import EndCart from '../EndCart/EndCart';
 import SidebarCart from '../SidebarCart/SidebarCart';
 
 function WindowWrapper(props) {
@@ -31,6 +32,18 @@ function WindowWrapper(props) {
                 }
                 return (
                     <BeerMenu />
+                )
+        case 'END_CART':
+                if (sidebarCart) {
+                    return (
+                        <>
+                            <EndCart />
+                            <SidebarCart />
+                        </>
+                    )
+                }
+                return (
+                    <EndCart />
                 )
         default:
             return (

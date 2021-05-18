@@ -13,13 +13,12 @@ function SidebarCard(props) {
             </div>
             <div>
                 <div className="d-flex">
-                    <p>ЦЕНА</p>
-                    <p>ЗА ШТУКУ</p>
-                    <p>{price}</p>
+                    <p className="mr-2">ЦЕНА</p>
+                    <p>{price}&#x20b8;</p>
                 </div>
                 <div className="d-flex align-items-center">
                     <button className="btn btn-primary btn-sm"onClick={() => reduceCart(id)}>-</button>
-                    <span className="d-flex price w-25 justify-content-center">{sum}</span>
+                    <span className="d-flex price px-2 justify-content-center">{sum}</span>
                     <button className="btn btn-primary btn-sm"onClick={() => appendCart(id)}>+</button>
                 </div>
             </div> 

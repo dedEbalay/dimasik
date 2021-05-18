@@ -27,6 +27,12 @@ const reducer = (state=initialState, action) => {
     };
 
     switch (action.type) {
+        case 'GO_TO_CART':
+            return {
+                ...state,
+                display: 'END_CART',
+                sidebarCart: false
+            }
         case 'BEER_LIST_LOADED':
             return {
                 ...state,
