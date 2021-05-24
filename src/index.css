@@ -77,4 +77,19 @@
 .end-cart-card {
   height: 150px;
 }
+
+.end-cart-card__button {
+  height: 42px;
+  width: 42px;
+}
+
+.error-card {
+  padding-top: 150px;
+  height: 100vw;
+  width: 100%;
+}
+
+.main-container {
+  padding-top: 71px;
+}
 /*# sourceMappingURL=index.css.map */

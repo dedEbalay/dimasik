@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Error from '../Error/Error';
 
 export default class ErrorBoundry extends Component {
     state = {
@@ -13,7 +14,7 @@ export default class ErrorBoundry extends Component {
         if (this.state.error) {
             return (
                 <div>
-                    <p>Вышла ошибочка</p>
+                    <Error />
                 </div>
             )
         };

@@ -1,12 +1,21 @@
 import React from 'react';
 import Header from './components/Header/Header';
-import WindowWrapper from './components/WindowWrapper/WindowWrapper.js';
+import { Switch, Route} from 'react-router-dom';
+import Main from './components/Main/Main';
+import BeerMenu from './components/BeerMenu/BeerMenu';
+import SidebarCart from './components/SidebarCart/SidebarCart';
+import EndCart from './components/EndCart/EndCart';
 
 function App() {
   return (
     <>
       <Header />
-      <WindowWrapper />
+      <Switch>
+          <Route exact path="/" component={Main} />
+          <Route path="/menu" component={BeerMenu} />
+          <Route path="/cart" component={EndCart} />
+      </Switch>
+      <SidebarCart />
     </>
   )
 }

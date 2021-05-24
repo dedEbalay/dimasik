@@ -3,19 +3,22 @@ import HeaderForm from '../HeaderForm/HeaderForm';
 import logo from '../../img/logo.svg';
 import { goToMenu, goToMain, openSidebar } from '../../redux/actions/actions';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 function Header(props) {
     return (
         <nav className="position-fixed navbar navbar-expand-lg navbar-dark bg-dark w-100 header">
             <div className="container">
                 <div className="navbar-brand">
-                    <img onClick={() => props.goToMain()} className="logo" src={logo} alt="logo"/>
+                    <NavLink to="/">
+                        <img onClick={() => props.goToMain()} className="logo" src={logo} alt="logo"/>
+                    </NavLink>
                 </div>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto justify-content-between mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <div onClick={() => props.goToMenu()} className="nav-link active" aria-current="page" href="#">Пивбаза</div>
-                        </li>
+                        <button className="btn btn-dark bg-dark">
+                            <NavLink to="/menu" onClick={() => props.goToMenu()} className="nav-link active" aria-current="page" href="#">Пивбаза</NavLink>
+                        </button>
                         <button onClick={() => props.openSidebar()} className="btn btn-dark bg-dark">
                             <span className="bi bi-basket">   Затаренное пивко</span>
                         </button>
