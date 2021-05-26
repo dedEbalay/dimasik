@@ -7,7 +7,7 @@ function EndCart(props) {
     return (
         <div className="end-cart container">
             <h1 className="pb-5">Корзина</h1>
-            <div>
+            <div className="h-100">
                 <h2>Список товаров</h2>
                 {addedToCart.map(item => {
                     return (

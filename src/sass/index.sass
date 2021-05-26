@@ -1,5 +1,9 @@
 @import "./_var"
 
+a
+  text-decoration: none
+  color: inherit
+
 #navbarSupportedContent 
   justify-content: space-evenly
 
@@ -36,31 +40,53 @@
 
 .header
   z-index: 1
-
-.beer-container
-  padding-top: 80px
+  position: sticky
+  top: 0
 
 .beer-button
   top: 10px
   right: 20px
 
 .end-cart
-  padding-top: 80px
+  padding-top: 40px
+  min-height: 40vw
   &-img
     max-height: 100%
     object-fit: contain
-    justify-self: center
-    align-self: center
+    margin: auto
   &-card
     height: 150px
     &__button
       height: 42px
       width: 42px
+  &-container
+    height: 100%
 
 .error-card
-  padding-top: 150px
   height: 100vw
   width: 100%
 
-.main-container
-  padding-top: 71px
+@keyframes swingX 
+	0% 
+		transform: translateX(0)
+	100% 
+		transform: translateX(10px)
+
+.footer
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  &-logo
+      object-fit: contain
+      height: 40px
+  &-link
+      &:hover
+        animation-name: swingX
+        animation-duration: 300ms
+        animation-fill-mode: forwards
+        text-decoration: none
+        color: inherit
+
+  
+
+	

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
-import { searchBeer } from '../../redux/actions/actions';
+import { searchBeer, goToMenu } from '../../redux/actions/actions';
 
 function HeaderForm(props) {
 
     let [searchText, setSearchText] = useState(null);
+
+    const { goToMenu, display } = props;
 
     function onChangeText(e) {
         const condition = e.target.value;
@@ -13,7 +15,11 @@ function HeaderForm(props) {
     };
 
     return (
-        <form className="d-flex">
+        <form className="d-flex" onSubmit={(e) => {
+            e.preventDefault();
+            goToMenu();
+            console.log(display)
+        }}>
             <input onChange={onChangeText} className="form-control me-2" type="search" placeholder="Найти пивчик" aria-label="Search" />
         </form>
     )
@@ -21,12 +27,14 @@ function HeaderForm(props) {
 
 const mapStateToProps = (store) => {
     return {
-        searchFilter: store.searchFilter
+        searchFilter: store.searchFilter,
+        display: store.display
     }
 }
 
 const mapDispatchToProps = {
-    searchBeer
+    searchBeer,
+    goToMenu
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderForm);

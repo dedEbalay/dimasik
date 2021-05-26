@@ -52,7 +52,8 @@ const reducer = (state=initialState, action) => {
         case 'GO_TO_MAIN':
             return {
                 ...state,
-                display: 'MAIN'
+                display: 'MAIN',
+                loading: true
             }
         case 'OPEN_SIDEBAR':
             return {

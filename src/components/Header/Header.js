@@ -3,27 +3,27 @@ import HeaderForm from '../HeaderForm/HeaderForm';
 import logo from '../../img/logo.svg';
 import { goToMenu, goToMain, openSidebar } from '../../redux/actions/actions';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Header(props) {
     return (
-        <nav className="position-fixed navbar navbar-expand-lg navbar-dark bg-dark w-100 header">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark w-100 header">
             <div className="container">
                 <div className="navbar-brand">
-                    <NavLink to="/">
+                    <Link to="/">
                         <img onClick={() => props.goToMain()} className="logo" src={logo} alt="logo"/>
-                    </NavLink>
+                    </Link>
                 </div>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto justify-content-between mb-2 mb-lg-0">
                         <button className="btn btn-dark bg-dark">
-                            <NavLink to="/menu" onClick={() => props.goToMenu()} className="nav-link active" aria-current="page" href="#">Пивбаза</NavLink>
+                            <Link to="/menu" onClick={() => props.goToMenu()} className="nav-link active" aria-current="page" href="#">Пивбаза</Link>
                         </button>
                         <button onClick={() => props.openSidebar()} className="btn btn-dark bg-dark">
                             <span className="bi bi-basket">   Затаренное пивко</span>
                         </button>
-                        <li className="nav-item dropdown">
-                            <div className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li className="nav-item dropdown align-self-center">
+                            <div className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Связь
                             </div>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
