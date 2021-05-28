@@ -64,7 +64,29 @@ const goToCart = () => {
     }
 }
 
+const currentMenuItem = (id) => {
+    return {
+        type: 'CURRENT_MENU_ITEM',
+        payload: id
+    }
+}
+
+const goToMenuItem = (id) => {
+    return {
+        type: 'GO_TO_MENU_ITEM',
+        payload: id
+    }
+}
+
+const clearSearchFilter = () => {
+    return {
+        type: 'CLEAR_SEARCH_FILTER'
+    }
+}
+
+
 export {
+    currentMenuItem,
     goToCart,
     reduceCart,
     appendCart,
@@ -74,5 +96,7 @@ export {
     goToMenu,
     goToMain,
     openSidebar,
-    addToCart
+    addToCart,
+    goToMenuItem,
+    clearSearchFilter
 }

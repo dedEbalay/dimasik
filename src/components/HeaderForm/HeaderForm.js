@@ -15,7 +15,7 @@ function HeaderForm(props) {
 
     return (
         <>
-            <form className="d-flex flex-column p-relative" onSubmit={(e) => {
+            <form className="header-form d-flex flex-column p-relative" onSubmit={(e) => {
                 e.preventDefault();
             }}>
                 <input onChange={onChangeText} className="form-control me-2" type="search" placeholder="Найти пивчик" aria-label="Search" />

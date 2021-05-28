@@ -28,8 +28,6 @@ function HeaderFormList(props) {
     
     let visibleMenu = searchPost(searchFilter, lowerMenu ,menu);
 
-    console.log(display)
-
     if (!searchFilter || visibleMenu.length < 1 || display === 'MENU') {
         return (
             <>

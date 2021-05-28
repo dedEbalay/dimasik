@@ -5,7 +5,8 @@ const initialState = {
     searchFilter: '',
     sidebarCart: false,
     addedToCart: [],
-    greatSum:0
+    greatSum:0,
+    currentMenuItem: localStorage.getItem("currentMenuItem")
 };
 
 const reducer = (state=initialState, action) => {
@@ -62,7 +63,12 @@ const reducer = (state=initialState, action) => {
             }
         case 'ADD_TO_CART':
             let newArr = state.addedToCart.map(item => item);
-            let newItem = {...state.menu[action.payload - 1], sum: 1, price: Math.floor(Math.random() * 10 - 2) + 2 };
+            let newItem = state.menu[state.menu.findIndex(item => item.id === action.payload)];
+            newItem = {
+                ...newItem,
+                sum: 1,
+                price: Math.floor(Math.random() * 10 - 2) + 10
+            };
             if (state.addedToCart.filter(item => item.id === action.payload).length > 0) {
                 let addedBeer = createNewItem();
                 addedBeer = {...addedBeer, sum: addedBeer.sum + 1};
@@ -108,6 +114,28 @@ const reducer = (state=initialState, action) => {
                 ...state,
                 addedToCart: sliceThis(newItem3),
                 greatSum: state.greatSum - beerSum
+            }
+        case 'CURRENT_MENU_ITEM':
+            const newItem4 = state.menu[state.menu.findIndex(item => item.id === action.payload)];
+            localStorage.setItem('ItemName', newItem4.name);
+            localStorage.setItem('ImgUrl', newItem4.image_url);
+            localStorage.setItem('ItemDescription', newItem4.description);
+            localStorage.setItem('ItemIBU', newItem4.ibu);
+            localStorage.setItem('ItemABV', newItem4.abv);
+            localStorage.setItem('ItemID', newItem4.id);
+            return {
+                ...state,
+                currentMenuItem: newItem4
+            }
+        case 'GO_TO_MENU_ITEM':
+            return {
+                ...state,
+                display: `MENU_ITEM_${action.payload}`
+            }
+        case 'CLEAR_SEARCH_FILTER':
+            return {
+                ...state,
+                searchFilter: ''
             }
         default: 
             return state
