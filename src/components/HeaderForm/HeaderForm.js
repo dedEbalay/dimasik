@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { searchBeer, goToMenu } from '../../redux/actions/actions';
+import HeaderFormList from '../HeaderFormList/HeaderFormList';
 
 function HeaderForm(props) {
 
     let [searchText, setSearchText] = useState(null);
-
-    const { goToMenu, display } = props;
 
     function onChangeText(e) {
         const condition = e.target.value;
@@ -15,21 +14,19 @@ function HeaderForm(props) {
     };
 
     return (
-        <form className="d-flex" onSubmit={(e) => {
-            e.preventDefault();
-            goToMenu();
-            console.log(display)
-        }}>
-            <input onChange={onChangeText} className="form-control me-2" type="search" placeholder="Найти пивчик" aria-label="Search" />
-        </form>
+        <>
+            <form className="d-flex flex-column p-relative" onSubmit={(e) => {
+                e.preventDefault();
+            }}>
+                <input onChange={onChangeText} className="form-control me-2" type="search" placeholder="Найти пивчик" aria-label="Search" />
+                <HeaderFormList />
+            </form>
+        </>
     )
 }
 
 const mapStateToProps = (store) => {
-    return {
-        searchFilter: store.searchFilter,
-        display: store.display
-    }
+    return {}
 }
 
 const mapDispatchToProps = {

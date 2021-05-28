@@ -7,7 +7,7 @@ import LoadSpinner from '../LoadSpinner/LoadSpinner';
 
 export function BeerMenu(props) {
 
-    const {beerList, beerListLoaded, searchFilter} = props
+    const {beerList, beerListLoaded, searchFilter} = props;
 
     useEffect(() => {
         beerList.getBeer()
@@ -41,6 +41,16 @@ export function BeerMenu(props) {
     if (loading) {
         return (
             <LoadSpinner />
+        )
+    }
+
+    if (visibleMenu.length < 1) {
+        return (
+            <div className="container beer-container">
+            <div className="row justify-content-center">
+                <h2>Похоже поиск не дал результатов :(</h2>
+            </div>
+        </div>
         )
     }
 
