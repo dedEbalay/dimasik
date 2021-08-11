@@ -22,8 +22,6 @@ function App(props) {
         .then(res =>beerListLoaded(res));
   }, [beerListLoaded, beerList]);
 
-  console.log(props.menu)
-
   return (
     <>
       <Header />

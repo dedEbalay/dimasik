@@ -74,6 +74,7 @@ const reducer = (state=initialState, action) => {
                 addedBeer = {...addedBeer, sum: addedBeer.sum + 1};
                 return {
                     ...state,
+                    sidebarCart: true,
                     addedToCart: sliceThis(addedBeer, addedBeer),
                     greatSum: state.greatSum + addedBeer.price
                 }
@@ -81,6 +82,7 @@ const reducer = (state=initialState, action) => {
             newArr = [...newArr, newItem];
             return {
                 ...state,
+                sidebarCart: true,
                 addedToCart: newArr,
                 greatSum: state.greatSum + newItem.price
             }
@@ -114,18 +116,6 @@ const reducer = (state=initialState, action) => {
                 ...state,
                 addedToCart: sliceThis(newItem3),
                 greatSum: state.greatSum - beerSum
-            }
-        case 'CURRENT_MENU_ITEM':
-            const newItem4 = state.menu[state.menu.findIndex(item => item.id === action.payload)];
-            localStorage.setItem('ItemName', newItem4.name);
-            localStorage.setItem('ImgUrl', newItem4.image_url);
-            localStorage.setItem('ItemDescription', newItem4.description);
-            localStorage.setItem('ItemIBU', newItem4.ibu);
-            localStorage.setItem('ItemABV', newItem4.abv);
-            localStorage.setItem('ItemID', newItem4.id);
-            return {
-                ...state,
-                currentMenuItem: newItem4
             }
         case 'GO_TO_MENU_ITEM':
             return {

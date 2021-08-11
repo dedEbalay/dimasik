@@ -1,9 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EndCartCard from '../EndCartCard/EndCartCard';
+import BackToMenuButton from '../BackButton/BackToMenuButton';
 
 function EndCart(props) {
     const {addedToCart} = props;
+
+    const btnTitle = "Купите пива, не совершайте ошибку!";
+
+    if (addedToCart.length === 0) {
+        return (
+            <div className="end-cart container">
+                <h1 className="pb-5">Вы пока ничего не купили</h1>
+                <BackToMenuButton title={btnTitle} />
+            </div>
+        )
+    }
+
     return (
         <div className="end-cart container">
             <h1 className="pb-5">Корзина</h1>

@@ -22,23 +22,11 @@ function Header(props) {
                         <button onClick={() => props.openSidebar()} className="btn btn-dark bg-dark">
                             <span className="bi bi-basket">   Затаренное пивко</span>
                         </button>
-                        <li className="nav-item dropdown align-self-center">
-                            <div className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Связь
-                            </div>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><div className="dropdown-item" href="#">Action</div></li>
-                                <li><div className="dropdown-item" href="#">Another action</div></li>
-                                <li><div className="dropdown-item" href="#">Something else here</div></li>
-                            </ul>
-                        </li>
                     </ul>
                     <HeaderForm />
                 </div>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon">
-                        
-                    </span>
+                    <span className="navbar-toggler-icon" />
                 </button>
             </div>
         </nav>

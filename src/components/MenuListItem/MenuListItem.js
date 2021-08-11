@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import BeerListWrapper from '../BeerListWrapper/BeerListWrapper';
-import { beerListLoaded } from '../../redux/actions/actions'
+import { beerListLoaded } from '../../redux/actions/actions';
+import BackToMenuButton from '../BackButton/BackToMenuButton';
+import BuyBeerButton from '../BuyBeerButton/BuyBeerButton';
 
 function MenuListItem(props) {
 
@@ -12,8 +14,6 @@ function MenuListItem(props) {
         beerList.getBeer()
             .then(res => beerListLoaded(res));
       }, [beerList, beerListLoaded]);
-    
-    console.log(menu)
 
     const menuItemId = menu.findIndex(item => item.id === +props.match.params.id)
 
@@ -25,7 +25,9 @@ function MenuListItem(props) {
         )
     }
 
-    const { name, image_url, description, abv, ibu, } = menuItem;
+    const btnTitle = "Назад к меню";
+
+    const { name, image_url, description, abv, ibu, id } = menuItem;
     
     return (
         <div className="menu-list__item-container container">
@@ -40,6 +42,10 @@ function MenuListItem(props) {
                         <div className="menu-list__item-descr__about__ibu">ГОРЕЧЬ В МЕЖДУНАРОДНОЙ ШКАЛЕ - {ibu}</div>
                         <div className="menu-list__item-descr__about__abv">КРЕПОСТЬ ПИВА - {abv}%</div>
                     </div>
+                </div>
+                <div className="menu-list__item-btn-wrapper">
+                    <BackToMenuButton title={btnTitle} />
+                    <BuyBeerButton id={id} />
                 </div>
             </div>
         </div>

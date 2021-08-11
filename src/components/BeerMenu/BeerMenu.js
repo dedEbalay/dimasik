@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
 import BeerCard from '../BeerCard/BeerCard';
-import {connect} from 'react-redux';
-import {beerListLoaded} from '../../redux/actions/actions';
+import { connect } from 'react-redux';
+import { beerListLoaded } from '../../redux/actions/actions';
 import BeerListWrapper from '../BeerListWrapper/BeerListWrapper';
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
 
 export function BeerMenu(props) {
 
-    const {beerList, beerListLoaded, searchFilter} = props;
+    const { beerList, beerListLoaded, searchFilter, menu, loading } = props;
 
     useEffect(() => {
         beerList.getBeer()
             .then(res =>beerListLoaded(res));
     }, [beerListLoaded, beerList]);
-
-    const {menu, loading} = props;
 
     function searchPost(condition, lowerItems, items) {
         if (condition.length === 0) {
