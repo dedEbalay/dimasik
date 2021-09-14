@@ -17,12 +17,12 @@ function EndCartCard(props) {
             <div className="w-25 align-middle price-card">
                 <div className="d-flex justify-content-between mb-3">
                     <h3>{sum * price}&#x20b8;</h3>
-                    <button onClick={() => removeFromCart(id)}className="end-cart-card__button btn btn-danger bi bi-trash"></button>
+                    <button onClick={() => removeFromCart(id)}className="end-cart-card__button btn bi bi-trash"></button>
                 </div>
                 <div className="d-flex justify-content-between w-100">
-                    <button onClick={() => reduceCart(id)}className="end-cart-card__button btn btn-dark">-</button>
+                    <button onClick={() => reduceCart(id)}className="end-cart-card__button btn ">-</button>
                     <p>{sum}</p>
-                    <button onClick={() => appendCart(id)}className="end-cart-card__button btn btn-dark">+</button>
+                    <button onClick={() => appendCart(id)}className="end-cart-card__button btn ">+</button>
                 </div>
             </div>
         </div>

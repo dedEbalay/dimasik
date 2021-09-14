@@ -21,16 +21,9 @@ function Main(props) {
         )
     }
 
-    // news.map(newsListItem => {
-    //     <div className="container center-component">
-    //         <h1>НОВОСТНАЯ ЛЕНТА</h1>
-    //         <NewsCard key={newsListItem.id} {...newsListItem}/>
-    //     </div>
-    // })
-
     return (
         <div className="container center-component">
-            <h1>НОВОСТНАЯ ЛЕНТА</h1>
+            <h1 className="news-h1">НОВОСТНАЯ ЛЕНТА</h1>
             { news.map(newsListItem => {
                 return (
                     <NewsCard key={newsListItem.id} {...newsListItem}/>

@@ -9,7 +9,7 @@ function SidebarCard(props) {
         <div className="card bg-dark w-100 px-3">
             <div className="d-flex justify-content-between align-center">
                 <h6 className="d-flex align-self-center">{name}</h6>
-                <button onClick={() => removeFromCart(id)}className="btn btn-danger bi bi-trash"></button>
+                <button onClick={() => removeFromCart(id)}className="btn bi bi-trash"></button>
             </div>
             <div>
                 <div className="d-flex">
@@ -17,9 +17,9 @@ function SidebarCard(props) {
                     <p>{price}&#x20b8;</p>
                 </div>
                 <div className="d-flex align-items-center">
-                    <button className="btn btn-primary btn-sm"onClick={() => reduceCart(id)}>-</button>
+                    <button className="btn btn-sm"onClick={() => reduceCart(id)}>-</button>
                     <span className="d-flex price px-2 justify-content-center">{sum}</span>
-                    <button className="btn btn-primary btn-sm"onClick={() => appendCart(id)}>+</button>
+                    <button className="btn btn-sm"onClick={() => appendCart(id)}>+</button>
                 </div>
             </div> 
         </div>

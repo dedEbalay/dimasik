@@ -372,6 +372,10 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 40px;
 }
 
+.news-h1 {
+  margin-bottom: 30px;
+}
+
 .news-date {
   -ms-flex-item-align: end;
       -ms-grid-row-align: end;
@@ -404,7 +408,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .news-card:hover {
-  background-color: transparent;
   cursor: pointer;
 }
 
