@@ -30,8 +30,8 @@ function MenuListItem(props) {
     const { name, image_url, description, abv, ibu, id } = menuItem;
     
     return (
-        <div className="menu-list__item-container container">
-            <div className="menu-list__item-wrapper d-flex py-5 px-5 justify-content-between bg-white">
+        <div className="menu-list__item-container container center-component">
+            <div className="menu-list__item-wrapper d-flex py-5 px-5 justify-content-between">
                 <div className="menu-list__item-img-wrapper">
                     <img className="menu-list__item-img" src={image_url} alt={name}/>
                 </div>

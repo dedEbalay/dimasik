@@ -5,7 +5,7 @@ import telegram from '../../img/telegram.svg';
 
 function Footer() {
     return (
-        <div className="footer bg-dark text-white py-5">
+        <div className="footer py-5">
             <div className="footer-container container d-flex justify-content-between">
                 <div className="footer__element vk-logo-container">
                     <a target="_blank" rel="noreferrer" className="footer-link vk-link d-flex align-items-center justify-content-center" href="https://vk.com/ebalay_adara_ilita">

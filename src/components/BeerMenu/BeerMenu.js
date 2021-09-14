@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import BeerCard from '../BeerCard/BeerCard';
 import { connect } from 'react-redux';
 import { beerListLoaded } from '../../redux/actions/actions';
@@ -7,12 +7,14 @@ import LoadSpinner from '../LoadSpinner/LoadSpinner';
 
 export function BeerMenu(props) {
 
-    const { beerList, beerListLoaded, searchFilter, menu, loading } = props;
+    //beerList, beerListLoaded,
 
-    useEffect(() => {
-        beerList.getBeer()
-            .then(res =>beerListLoaded(res));
-    }, [beerListLoaded, beerList]);
+    const { searchFilter, menu, loading } = props;
+
+    // useEffect(() => {
+    //     beerList.getBeer()
+    //         .then(res => beerListLoaded(res));
+    // }, [beerListLoaded, beerList]);
 
     function searchPost(condition, lowerItems, items) {
         if (condition.length === 0) {
@@ -44,7 +46,7 @@ export function BeerMenu(props) {
 
     if (visibleMenu.length < 1) {
         return (
-            <div className="container beer-container">
+            <div className="container beer-container center-component">
             <div className="row justify-content-center">
                 <h2>Похоже поиск не дал результатов :(</h2>
             </div>
@@ -53,7 +55,7 @@ export function BeerMenu(props) {
     }
 
     return (
-        <div className="container beer-container">
+        <div className="container beer-container center-component">
             <div className="row justify-content-center">
                 {
                     visibleMenu.map(item => {

@@ -9,14 +9,14 @@ function SidebarCart(props) {
 
     if (sidebarCart) {
         return (
-            <div className="px-4 pt-3 bg-dark position-fixed d-flex sidebar-cart text-white h-100 w-25 flex-column">
+            <div className="px-4 pt-3 position-fixed d-flex sidebar-cart h-100 w-25 flex-column">
                 <h3>Корзина</h3>
                 <div className="d-flex justify-content-between mb-4">
                     <div>Сумма пивка</div>
                     <div>{greatSum}&#x20b8;</div>
                 </div>
                 <NavLink to="/cart">
-                    <button onClick={() => goToCart()}className="btn btn-primary button-dark text-white mb-3">Перейти к тележке</button>
+                    <button onClick={() => goToCart()}className="btn mb-3">Перейти к тележке</button>
                 </NavLink>
                 {props.addedToCart.map(item => {
                     return (

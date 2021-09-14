@@ -10,17 +10,21 @@ import Footer from './components/Footer/Footer';
 import MenuListItem from './components/MenuListItem/MenuListItem';
 import { connect } from 'react-redux';
 import { beerListLoaded } from './redux/actions/actions';
-import BeerListWrapper from './components/BeerListWrapper/BeerListWrapper'
+import BeerListWrapper from './components/BeerListWrapper/BeerListWrapper';
 
 
 function App(props) {
 
   const { beerList, beerListLoaded } = props;
 
+  
+
   useEffect(() => {
     beerList.getBeer()
-        .then(res =>beerListLoaded(res));
+        .then(res => beerListLoaded(res));
   }, [beerListLoaded, beerList]);
+
+ 
 
   return (
     <>
@@ -40,12 +44,12 @@ function App(props) {
 
 const mapStateToProps = (store) => {
   return {
-    menu: store.menu
+    menu: store.menu,
   }
 }
 
 const mapDispatchToProps = {
-  beerListLoaded
+  beerListLoaded,
 }
 
 export default BeerListWrapper()(connect(mapStateToProps, mapDispatchToProps)(App));

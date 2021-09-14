@@ -10,7 +10,7 @@ function EndCart(props) {
 
     if (addedToCart.length === 0) {
         return (
-            <div className="end-cart container">
+            <div className="end-cart container center-component">
                 <h1 className="pb-5">Вы пока ничего не купили</h1>
                 <BackToMenuButton title={btnTitle} />
             </div>
@@ -18,7 +18,7 @@ function EndCart(props) {
     }
 
     return (
-        <div className="end-cart container">
+        <div className="end-cart container center-component">
             <h1 className="pb-5">Корзина</h1>
             <div className="h-100">
                 <h2>Список товаров</h2>

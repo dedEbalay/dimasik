@@ -2,6 +2,7 @@ const initialState = {
     display: 'MAIN',
     loading: true,
     menu: [],
+    news: [],
     searchFilter: '',
     sidebarCart: false,
     addedToCart: [],
@@ -126,6 +127,12 @@ const reducer = (state=initialState, action) => {
             return {
                 ...state,
                 searchFilter: ''
+            }
+        case 'NEWS_LIST_LOADED':
+            return {
+                ...state,
+                loading: false,
+                news: action.payload
             }
         default: 
             return state

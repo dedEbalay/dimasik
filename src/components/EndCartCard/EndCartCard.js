@@ -5,12 +5,16 @@ import { reduceCart,appendCart,removeFromCart } from '../../redux/actions/action
 function EndCartCard(props) {
     const {name, tagline, sum, price, id, appendCart, removeFromCart, reduceCart} = props;
     return (
-        <div className="d-flex end-cart-card px-2 py-2 align-middle">
-            <div className="w-75 d-flex justify-content-between">
-                <img className="end-cart-img justify-content-center" src={props.image_url} alt="Пивчик" />
-                <p className="w-75 align-middle">{name} <br /> {tagline}</p>
+        <div className="d-flex end-cart-card px-2 py-2 align-middle w-100">
+            <div className="w-100 d-flex">
+                <div className="card-img-container d-flex col-md-4">
+                    <img className="end-cart-img justify-content-center" src={props.image_url} alt="Пивчик" />
+                </div>
+                <div className="card-body">
+                    <p className="card-text">{name} <br /> {tagline}</p>
+                </div>
             </div>
-            <div className="w-25 align-middle">
+            <div className="w-25 align-middle price-card">
                 <div className="d-flex justify-content-between mb-3">
                     <h3>{sum * price}&#x20b8;</h3>
                     <button onClick={() => removeFromCart(id)}className="end-cart-card__button btn btn-danger bi bi-trash"></button>

@@ -77,6 +77,13 @@ const clearSearchFilter = () => {
     }
 }
 
+const newsListLoaded = (newMenu) => {
+    return {
+        type: 'NEWS_LIST_LOADED',
+        payload: newMenu
+    }
+};
+
 
 export {
     goToCart,
@@ -90,5 +97,6 @@ export {
     openSidebar,
     addToCart,
     goToMenuItem,
-    clearSearchFilter
+    clearSearchFilter,
+    newsListLoaded
 }

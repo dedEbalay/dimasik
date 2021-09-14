@@ -7,19 +7,19 @@ import { Link } from 'react-router-dom';
 
 function Header(props) {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark w-100 header">
+        <nav className="navbar navbar-expand-lg navbar w-100 header">
             <div className="container">
                 <div className="navbar-brand">
                     <Link to="/">
                         <img onClick={() => props.goToMain()} className="logo" src={logo} alt="logo"/>
                     </Link>
                 </div>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto justify-content-between mb-2 mb-lg-0">
-                        <button className="btn btn-dark bg-dark">
-                            <Link to="/menu" onClick={() => props.goToMenu()} className="nav-link active" aria-current="page" href="#">Пивбаза</Link>
+                <div className="navbar-collapse collapse header-navbar d-flex" id="navbarSupportedContent">
+                    <ul className="navbar-nav justify-content-evenly w-50 mb-2 mb-lg-0">
+                        <button className="btn header-btn">
+                            <Link to="/menu" onClick={() => props.goToMenu()} className="nav-link" aria-current="page" href="#">Пивбаза</Link>
                         </button>
-                        <button onClick={() => props.openSidebar()} className="btn btn-dark bg-dark">
+                        <button onClick={() => props.openSidebar()} className="btn header-btn">
                             <span className="bi bi-basket">   Затаренное пивко</span>
                         </button>
                     </ul>

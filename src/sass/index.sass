@@ -11,8 +11,19 @@ a
     color: inherit
     text-decoration: none
 
-body
-  background-color: #f7f4f4
+#root
+  background-color: $background 
+  color: $paragraph
+
+button
+  background-color: $button !important
+  color: $button-text !important
+  &:focus
+    box-shadow: none
+    border: none
+
+h1,h2,h3,h4,h5,h6
+  color: $headline
 
 #navbarSupportedContent 
   justify-content: space-evenly
@@ -21,22 +32,39 @@ body
   max-width: 30px
   max-height: 100%
 
-.card-img
-  max-height: 260px
-  object-fit: contain
-  max-width: 100%
-  justify-self: center
-  align-self: center
-  margin-right: auto
-  margin-left: auto
+.container
+  max-height: 100%
 
 .card-pre-container 
+  padding: 20px
+
+.price-card
   padding: 20px
 
 .card
   width: 80%
   padding-top: 20px
   padding-bottom: 10px
+  background-color: $background
+  margin-bottom: 20px
+  &-beer
+    border: 1px solid $border
+    overflow: hidden
+    padding: 0
+  &-img
+    max-height: 260px
+    object-fit: contain
+    max-width: 100%
+    justify-self: center
+    align-self: center
+    margin-right: auto
+    margin-left: auto
+    &-container
+      background-color: #94a1b2
+      max-width: 20%
+      object-fit: cover
+      height: 100%
+
 
 .bi-basket
   &::before
@@ -47,12 +75,29 @@ body
   right: 0
   z-index: 2
   overflow-y: scroll
+  height: 100vh
+  padding-bottom: 40px
+  background-color: $header-secondary
 
 .header
   z-index: 1
   position: sticky
   top: 0
+  background-color: $header-background
+  &-btn
+    background-color: $header-background !important
+    height: 100%
+    max-height: 100%
+    border: none
+    &:focus
+      border: none
+      box-shadow: none
+    &:hover
+      background-color: $header-secondary !important
   &-form
+    &-input
+      background-color: $header-secondary
+      border: none
     &-container
       min-width: 20%
       top: 105%
@@ -60,10 +105,10 @@ body
     &-list
       &__item
         &-link
-          &:hover
-            text-decoration: none
-            color: inherit
-            background-color: #d3d3d381
+          // &:hover
+          //   text-decoration: none
+          //   color: inherit
+          //   background-color: #d3d3d381
         &-img
           justify-self: center
           max-width: 15px
@@ -82,8 +127,12 @@ body
   min-height: 40.1vw
   &-img
     margin: auto
+    object-fit: cover
   &-card
     height: 150px
+    border: 1px solid $border
+    padding: 0 !important
+    margin-bottom: 20px
     &__button
       height: 42px
       width: 42px
@@ -104,6 +153,8 @@ body
   display: flex
   flex-direction: row
   justify-content: space-between
+  background-color: $header-background
+  color: $headline
   &-logo
       object-fit: contain
       height: 40px
@@ -123,15 +174,13 @@ body
 .menu
   &-list
     &__item
+      &-wrapper
+        background-color: $header-secondary
       &-btn
         &-wrapper
           height: max-content
           display: flex
           width: max-content
-      &-container
-        min-height: 40.1vw
-        padding-top: 50px
-        padding-bottom: 50px
       &-img
         margin: auto
         display: block
@@ -184,3 +233,60 @@ body
     100% 
         opacity: 1
         transform: translateY(0px)      
+
+.center-component
+  min-height: calc( 100vh - 186px )
+  padding-top: 40px
+
+.news
+  &-date
+    align-self: end
+    width: max-content
+    font-size: 20px
+  &-text
+    margin-bottom: 30px
+  &-card
+    margin-bottom: 30px
+    border: none
+    background-color: $header-background
+    &-body
+      display: flex
+      flex-direction: column
+      padding-bottom: 5px
+    &:hover
+      background-color: transparent
+      cursor: pointer
+  &-img
+    object-fit: cover
+    position: relative
+    min-height: 260px
+    background-position: center
+    background-repeat: no-repeat
+    background-size: 100%
+    margin-bottom: 20px
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      right: 0
+      bottom: 0
+      width: 100%
+      height: 100%
+      background-color: rgba(#fff, 0.4)
+    
+.nav
+  &bar
+    height: 50px
+    padding: 0
+    &-collapse
+      height: 50px
+    &-brand
+      padding: 0
+      height: 50px
+    &-nav
+      align-items: center
+      height: 100% 
+      max-height: 100% 
+  &-link
+    padding: 0

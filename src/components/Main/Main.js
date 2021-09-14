@@ -1,14 +1,55 @@
-import React from 'react';
-import beerDay from '../../img/beerDay.jpg';
-import beerDay2 from '../../img/beerDay2.jpg';
+import React, {useEffect} from 'react';
+import { connect } from 'react-redux';
+import NewsCard from '../NewsCard/NewsCard';
+import LoadSpinner from '../LoadSpinner/LoadSpinner';
+import NewsList from '../../services/NewsList';
+import { newsListLoaded } from '../../redux/actions/actions'
 
-function Main() {
+function Main(props) {
+
+    const { loading, news, newsListLoaded } = props
+
+    useEffect(() => {
+        const newsList = new NewsList();
+        newsList.getAllNews()
+          .then(res => newsListLoaded(res))
+      }, [newsListLoaded])
+
+    if (loading) {
+        return (
+            <LoadSpinner />
+        )
+    }
+
+    // news.map(newsListItem => {
+    //     <div className="container center-component">
+    //         <h1>НОВОСТНАЯ ЛЕНТА</h1>
+    //         <NewsCard key={newsListItem.id} {...newsListItem}/>
+    //     </div>
+    // })
+
     return (
-        <div className="d-flex main-container">
-            <img className="w-50" src={beerDay} alt="С днем пива"></img>
-            <img className="w-50" src={beerDay2} alt="С днем пива 2"></img>
+        <div className="container center-component">
+            <h1>НОВОСТНАЯ ЛЕНТА</h1>
+            { news.map(newsListItem => {
+                return (
+                    <NewsCard key={newsListItem.id} {...newsListItem}/>
+                )
+            })}
         </div>
     )
+
 }
 
-export default Main;
+const mapStateToProps = (store) => {
+    return {
+        loading: store.loading,
+        news: store.news
+    }
+}
+
+const mapDispatchToProps = {
+    newsListLoaded
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
